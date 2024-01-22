@@ -1,0 +1,164 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    padding-inline: 30px;
+}
+
+:root {
+    --line-color: #545454;
+    --text-color: #545454;
+    --border-radius: 4px;
+    --border: 1px solid var(--line-color);
+}
+
+.filter-group {
+    display: flex;
+    margin-top: 20px;
+}
+
+    .filter-group input {
+        padding-left: 20px;
+        height: 40px;
+        border: var(--border);
+        border-radius: var(--border-radius);
+    }
+
+.group {
+    display: flex;
+    margin-right: 70px;
+}
+
+    .group .btn {
+        margin-left: 15px;
+    }
+
+    .group form {
+        display: flex;
+    }
+
+.btn {
+    background: none;
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 18px;
+    display: flex;
+    height: 40px;
+    border: var(--border);
+    border-radius: var(--border-radius);
+    align-items: center;
+    padding-inline: 10px;
+}
+
+.complete-btn {
+    background: none;
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 16px;
+    display: flex;
+    height: 35px;
+    border: var(--border);
+    border-radius: 3px;
+    align-items: center;
+    padding-inline: 10px;
+}
+
+table {
+    width: 100%;
+    margin-top: 50px;
+    border-block: var(--border);
+}
+
+    table tr {
+        border-block: 1px solid black
+    }
+
+    table tbody {
+        font-size: 20px;
+    }
+
+    table td.status.success {
+        color: green;
+    }
+
+    table td.status.not-success {
+        color: orange;
+    }
+
+    table tbody tr td {
+        padding-block: 10px;
+    }
+
+.actions {
+    display: flex;
+    float: right;
+}
+
+    .actions .icon {
+        margin-inline: 5px;
+    }
+
+.edit-icon {
+    height: 35px;
+}
+
+.delete-btn {
+    background: none;
+    border: none;
+}
+
+.delete-icon {
+    height: 35px;
+}
+
+.btns {
+    justify-content: center;
+    display: flex;
+}
+
+    .btns .btn {
+        padding-inline: 15px;
+        margin-top: 10px;
+        margin-inline: 10px;
+    }
+
+.wrapper {
+    margin-top: 30px;
+    padding-inline: 30px;
+    padding-block: 20px;
+    border: 1px solid black;
+    margin-inline: auto;
+    flex-direction: column;
+    width: fit-content;
+    display: flex;
+}
+
+.edit-form input {
+    padding-left: 20px;
+    height: 40px;
+    border: var(--border);
+    border-radius: var(--border-radius);
+}

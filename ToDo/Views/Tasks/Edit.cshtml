@@ -1,0 +1,24 @@
+﻿@model Todo.Mvc.Models.Task;
+
+@{
+    ViewData["Title"] = "Edit task";
+}
+
+<div class="wrapper">
+    <h1>Edit</h1>
+
+    <form class="edit-form" method="post" asp-action="Edit">
+
+        <label asp-for="Title">
+            <input asp-for="Title" />
+        </label>
+
+        <input type="hidden" asp-for="Id" />
+
+        <div class="btns">
+            <button type="submit" class="btn">Edit</button>
+            <a asp-action="List" class="btn">Cancel</a>
+        </div>
+
+    </form>
+</div>

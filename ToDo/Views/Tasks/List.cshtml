@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Todo.Mvc.Models.Task>
+
+@{
+    ViewData["Title"] = "Tasks";
+}
+
+<div class="filter-group">
+    <div class="group">
+        <form method="post" asp-action="Create">
+            <input type="text" name="title" placeholder="New task" />
+            <button class="btn">Add task</button>
+        </form>
+    </div>
+    <div class="group">
+        <form method="get" asp-action="List">
+            <input type="text" name="title" placeholder="Search by title" />
+            <button type="submit" class="btn">Search</button>
+            <a asp-action="List" class="btn">Back to full list</a>
+        </form>
+    </div>
+</div>
+
+<table>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <form method="post" asp-action="Complete" asp-route-id="@item.Id">
+                        <button class="complete-btn">Complete</button>
+                    </form>
+                </td>
+                <td>
+                    @item.Title
+                </td>
+                @if (item.IsCompleted)
+                {
+                    <td class="status success">@item.Status</td>
+                }
+                else
+                {
+                    <td class="status not-success">@item.Status</td>
+                }
+                <td class="actions">
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="icon">
+                        <img class="edit-icon" src="~/images/edit-icon.png">
+                    </a>
+                    <form method="post" , asp-action="Delete" asp-route-id="@item.Id" class="icon"
+                    onclick="return confirm('Are you sure you want to delete task @item.Title')">
+                        <button class="delete-btn">
+                            <img class="delete-icon" src="~/images/delete-icon.png" />
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
