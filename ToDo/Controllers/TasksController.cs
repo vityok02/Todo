@@ -32,7 +32,7 @@ public class TasksController : Controller
         return View(tasks);
     }
 
-    [HttpPost, ActionName(nameof(Create))]
+    [HttpPost]
     public async Task<IActionResult> Create(
         [FromForm] string? title,
         CancellationToken cancellationToken = default)
@@ -69,16 +69,20 @@ public class TasksController : Controller
     {
         if (id == 0)
         {
-            return NotFound();
+            return NotFound(TaskNotFoundMessage);
         }
 
         var task = await _taskRepository.GetAsync(id, cancellationToken);
+
+        if (task is null)
+        {
+            return NotFound(TaskNotFoundMessage);
+        }
 
         return View(task);
     }
 
     [HttpPost]
-    [Route("tasks/edit/{id:int}")]
     public async Task<IActionResult> Edit(
         [FromRoute] int id,
         [FromForm] EditTaskDto taskDto,
@@ -108,7 +112,6 @@ public class TasksController : Controller
     }
 
     [HttpPost]
-    [Route("tasks/{id:int}")]
     public async Task<IActionResult> Delete(
         [FromRoute] int id,
         CancellationToken cancellationToken = default)
