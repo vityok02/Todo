@@ -1,0 +1,24 @@
+version: '3.4'
+
+services:
+  todo.mvc:
+    image: ${DOCKER_REGISTRY-}todomvc
+    container_name: todo-app
+    build:
+      context: .
+      dockerfile: ToDo/Dockerfile
+    ports:
+      - "5000:5000"
+      - "5001:5001"
+  todo.db:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    container_name: todo-db
+    restart: always
+    environment:
+      - SA_PASSWORD=yourStrong(!)Password
+      - ACCEPT_EULA=Y
+    ports:
+      - "1433:1433"
+    volumes:
+      - ./.containers/todo-db:/var/lib/sql/data 
+

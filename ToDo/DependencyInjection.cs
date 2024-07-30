@@ -6,11 +6,11 @@ using Task = Todo.Mvc.Models.Task;
 
 namespace Todo;
 
-public static class ServiceConfigurator
+public static class DependencyInjection
 {
     public static IServiceCollection AddServices(this IServiceCollection services, IConfiguration configuration)
     {
-        var connectionString = configuration.GetConnectionString("localdb");
+        var connectionString = configuration.GetConnectionString("docker");
 
         return services
             .AddDbContext<AppDbContext>(o =>
